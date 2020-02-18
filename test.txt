@@ -1,0 +1,84 @@
+C:\Users\vrwil\Desktop\kickup>npm test-all
+
+Usage: npm <command>
+
+where <command> is one of:
+    access, adduser, audit, bin, bugs, c, cache, ci, cit,
+    clean-install, clean-install-test, completion, config,
+    create, ddp, dedupe, deprecate, dist-tag, docs, doctor,
+    edit, explore, fund, get, help, help-search, hook, i,
+    init, install, install-ci-test, install-test, it, link,
+    list, ln, login, logout, ls, org, outdated, owner, pack,
+    ping, prefix, profile, prune, publish, rb, rebuild, repo,
+    restart, root, run, run-script, s, se, search, set,
+    shrinkwrap, star, stars, start, stop, t, team, test,
+    token, tst, un, uninstall, unpublish, unstar, up, update,
+    v, version, view, whoami
+
+npm <command> -h  quick help on <command>
+npm -l            display full usage info
+npm help <term>   search for help on <term>
+npm help npm      involved overview
+
+Specify configs in the ini-formatted file:
+    C:\Users\vrwil\.npmrc
+or on the command line via: npm <command> --key value
+Config info can be viewed via: npm help config
+
+npm@6.13.4 F:\NodeJS\node_modules\npm
+
+Did you mean one of these?
+    install
+    restart
+    test
+
+C:\Users\vrwil\Desktop\kickup>test
+'test' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\vrwil\Desktop\kickup>npm test
+
+> kickup-challenge@ test C:\Users\vrwil\Desktop\kickup
+> echo "Error: run 'npm run test-update', 'npm run test-debounce', or 'npm run test-all'" && exit 1
+
+"Error: run 'npm run test-update', 'npm run test-debounce', or 'npm run test-all'"
+npm ERR! Test failed.  See above for more details.
+
+C:\Users\vrwil\Desktop\kickup>npm test test-all
+
+> kickup-challenge@ test C:\Users\vrwil\Desktop\kickup
+> echo "Error: run 'npm run test-update', 'npm run test-debounce', or 'npm run test-all'" && exit 1 "test-all"
+
+"Error: run 'npm run test-update', 'npm run test-debounce', or 'npm run test-all'"
+npm ERR! Test failed.  See above for more details.
+
+C:\Users\vrwil\Desktop\kickup>
+
+
+
+
+
+
+//TODO: export your debounce function from this file!
+
+console.log("hello");
+
+module.exports = function(func, wait, immediate){
+  var timeout;
+
+return function(){
+  var context = this, args = arguments;
+  var later = function () {
+    timeout = null;
+    if (!immediate) func.apply (context, args);
+  };
+
+  var callNow = immediate && !timeout;
+
+  clearTimeout(timeout);
+
+  timeout = setTimeout(later, wait);
+
+  if(callNow) func.apply(context, args);
+};
+};
