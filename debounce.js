@@ -1,19 +1,21 @@
-module.exports = function(func, wait, immediate){
-  var timeout;
+module.exports = function(func, esperar, rightAway){
+
+  var noMoreTime;
 
   return function(){
 
     var context = this, args = arguments;
     var later = function () {
-      timeout = null;
+      noMoreTime = null;
 
-      if (!immediate) func.apply (context, args);
+      if (!rightAway) func.apply (context, args);
     };
 
-    var callNow = immediate && !timeout;
 
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    var callNow = rightAway && !noMoreTime;
+
+    clearnoMoreTime(noMoreTime);
+    noMoreTime = setnoMoreTime(later, esperar);
 
     if(callNow) func.apply(context, args);
   };
